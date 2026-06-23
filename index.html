@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finance Glance | Plaid Review</title>
+    <meta
+      name="description"
+      content="Finance Glance is a personal household finance dashboard for bill timing, weekly allowance planning, savings progress, and widgets powered by Plaid Link."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hero">
+      <img
+        class="hero-image"
+        src="assets/screenshots/finance-glance-desktop.png"
+        alt="Finance Glance dashboard showing paycheck timing, bill timing, weekly allowance, and savings progress"
+      >
+      <div class="hero-shade"></div>
+      <nav class="topbar" aria-label="Project">
+        <a class="brand" href="./" aria-label="Finance Glance home">
+          <span class="brand-mark">FG</span>
+          <span>Finance Glance</span>
+        </a>
+        <div class="nav-links">
+          <a href="#plaid">Plaid use</a>
+          <a href="#security">Security</a>
+        </div>
+      </nav>
+      <section class="hero-copy" aria-labelledby="hero-title">
+        <p class="eyebrow">Private household alpha</p>
+        <h1 id="hero-title">Finance Glance</h1>
+        <p>
+          A paycheck-aware finance dashboard for bills, weekly allowance, savings progress,
+          and glanceable widgets.
+        </p>
+      </section>
+    </header>
+
+    <main>
+      <section class="intro" aria-label="What separates Finance Glance">
+        <div>
+          <p class="eyebrow">What makes it different</p>
+          <h2>Budgeting starts with the bills that actually hit each paycheck.</h2>
+        </div>
+        <div class="intro-grid">
+          <article>
+            <strong>Paycheck timing first</strong>
+            <p>Finance Glance shows which confirmed bills are due before the next check and what remains after them.</p>
+          </article>
+          <article>
+            <strong>Reviewed bills drive the math</strong>
+            <p>Detected recurring charges become suggestions. Users confirm, edit, ignore, or mark bills missing before they affect allowance.</p>
+          </article>
+          <article>
+            <strong>Widgets are a core surface</strong>
+            <p>The same data powers weekly spending, upcoming bill timing, wishlist progress, and savings streak widgets.</p>
+          </article>
+          <article>
+            <strong>Built for messy real life</strong>
+            <p>The model supports irregular income, maternity leave checks, variable utilities, refunds, transfers, and CSV fallback.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="screens" aria-label="Product screenshots">
+        <div class="screen-copy">
+          <p class="eyebrow">Product preview</p>
+          <h2>Dashboard and mobile widget views</h2>
+          <p>
+            Screenshots use fake demo data from a sandbox household fixture. They do not contain real
+            account numbers, real bank data, Plaid access tokens, or personal credentials.
+          </p>
+        </div>
+        <div class="screen-grid">
+          <figure class="desktop-shot">
+            <img src="assets/screenshots/finance-glance-desktop.png" alt="Finance Glance desktop dashboard with bill and paycheck timing">
+            <figcaption>Desktop dashboard with paycheck-aware bill timing and reviewed recurring bills.</figcaption>
+          </figure>
+          <figure class="mobile-shot">
+            <img src="assets/screenshots/finance-glance-mobile.png" alt="Finance Glance mobile widget showing weekly spending and next paycheck bills">
+            <figcaption>Mobile widget preview with weekly spend, recent transactions, and next paycheck bills.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="plaid" id="plaid" aria-label="Plaid integration details">
+        <div>
+          <p class="eyebrow">Plaid integration</p>
+          <h2>Finance Glance uses Plaid Link, not stored bank passwords.</h2>
+          <p>
+            Plaid connects checking and savings accounts so the app can import transactions,
+            read account balances, detect recurring bill candidates, and verify savings progress.
+          </p>
+        </div>
+        <dl class="details">
+          <div>
+            <dt>Plaid products</dt>
+            <dd>Transactions and account balance data for checking and savings accounts.</dd>
+          </div>
+          <div>
+            <dt>Data purpose</dt>
+            <dd>Recurring bill review, weekly spending allowance, recent transaction widgets, and savings verification.</dd>
+          </div>
+          <div>
+            <dt>Credential handling</dt>
+            <dd>Users connect through Plaid Link. Finance Glance does not collect or store bank usernames or passwords.</dd>
+          </div>
+          <div>
+            <dt>Token handling</dt>
+            <dd>Plaid secrets and access tokens stay server-side. Browser code receives sanitized account, balance, and transaction data only.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="security" id="security" aria-label="Security and hardening">
+        <div class="security-copy">
+          <p class="eyebrow">Security and hardening</p>
+          <h2>Private by default, with real-data gates before production.</h2>
+          <p>
+            Finance Glance is being proven in sandbox and private alpha first. The current build
+            separates browser UI from Plaid secrets, avoids raw credential handling, and keeps the
+            production checklist explicit before broader use.
+          </p>
+        </div>
+        <div class="security-grid">
+          <article>
+            <strong>Plaid Link only</strong>
+            <p>Users authenticate through Plaid Link. Finance Glance does not collect, store, or proxy bank usernames and passwords.</p>
+          </article>
+          <article>
+            <strong>Server-side token boundary</strong>
+            <p>Plaid secrets and access tokens stay out of browser JavaScript. The UI receives normalized account, balance, and transaction data.</p>
+          </article>
+          <article>
+            <strong>Local bridge hardening</strong>
+            <p>The prototype backend binds to loopback by default, checks allowed browser origins, applies basic security headers, and can disable demo endpoints.</p>
+          </article>
+          <article>
+            <strong>Data reset controls</strong>
+            <p>The app includes local clear-data and disconnect-bank flows so linked account data can be removed during testing.</p>
+          </article>
+          <article>
+            <strong>Regression checks</strong>
+            <p>Security regression and secret-scan tests check request handling, demo gating, frontend escaping, and obvious committed token mistakes.</p>
+          </article>
+          <article>
+            <strong>Production gates</strong>
+            <p>Before public launch: user auth, encrypted token storage, webhook handling, monitoring, account deletion/revoke flows, and Plaid production approval.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="status" aria-label="Development status">
+        <div>
+          <p class="eyebrow">Current status</p>
+          <h2>Private local alpha for a two-person household.</h2>
+        </div>
+        <p>
+          The first real-data phase is personal access for the creator household. The app currently runs
+          as a local prototype with a private source repository, sandbox Plaid support, fake messy-data
+          simulation, CSV fallback, and security regression checks.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Finance Glance</span>
+      <span>Built for Plaid review and private alpha validation.</span>
+    </footer>
+  </body>
+</html>
